@@ -1,0 +1,110 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Jean Dupont",
+      "email": "jean@finova.test",
+      "password": "demo1234",
+      "accountNumber": "FR76 3000 6000 0112 3456 7890 189",
+      "balance": 12450.0
+    },
+    {
+      "id": 2,
+      "name": "Amina Diallo",
+      "email": "amina@finova.test",
+      "password": "demo1234",
+      "accountNumber": "FR76 3000 6000 0222 3456 7890 189",
+      "balance": 5820.45
+    },
+    {
+      "id": 3,
+      "name": "Lucas Martin",
+      "email": "lucas@finova.test",
+      "password": "demo1234",
+      "accountNumber": "FR76 3000 6000 0333 3456 7890 189",
+      "balance": 980.1
+    },
+    {
+      "id": 4,
+      "name": "Fatou Ngom",
+      "email": "fatou@finova.test",
+      "password": "demo1234",
+      "accountNumber": "FR76 3000 6000 0444 3456 7890 189",
+      "balance": 20120.75
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1001,
+      "userId": 1,
+      "date": "2024-05-24",
+      "title": "Dépôt par Virement",
+      "subtitle": "REF: #TRX-99218",
+      "amount": 1500.0,
+      "status": "Complété"
+    },
+    {
+      "id": 1002,
+      "userId": 1,
+      "date": "2024-05-22",
+      "title": "Achat Amazon.fr",
+      "subtitle": "Paiement par Carte",
+      "amount": -42.5,
+      "status": "Complété"
+    },
+    {
+      "id": 1003,
+      "userId": 1,
+      "date": "2024-05-20",
+      "title": "Retrait Distributeur",
+      "subtitle": "Paris, France",
+      "amount": -100.0,
+      "status": "En cours"
+    },
+    {
+      "id": 1004,
+      "userId": 1,
+      "date": "2024-05-18",
+      "title": "Rechargement Crypto",
+      "subtitle": "Swap Wallet",
+      "amount": 50.25,
+      "status": "Complété"
+    },
+    {
+      "id": 2001,
+      "userId": 2,
+      "date": "2024-06-02",
+      "title": "Salaire",
+      "subtitle": "Entreprise X",
+      "amount": 3200.0,
+      "status": "Complété"
+    },
+    {
+      "id": 2002,
+      "userId": 2,
+      "date": "2024-06-05",
+      "title": "Loyer",
+      "subtitle": "Appartement",
+      "amount": -650.0,
+      "status": "Complété"
+    },
+    {
+      "id": 3001,
+      "userId": 3,
+      "date": "2024-05-30",
+      "title": "Achat Supermarché",
+      "subtitle": "Courses",
+      "amount": -73.45,
+      "status": "Complété"
+    },
+    {
+      "id": 4001,
+      "userId": 4,
+      "date": "2024-06-01",
+      "title": "Virement entrant",
+      "subtitle": "Client Pro",
+      "amount": 5400.0,
+      "status": "En cours"
+    }
+  ]
+}
