@@ -1,0 +1,364 @@
+<div class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+  <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+    <!-- Navigation -->
+    <header
+      class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
+    >
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3 text-primary">
+          <div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+            <span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-white text-2xl font-black tracking-tight">Finova</h2>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+          <button
+            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+            type="button"
+            (click)="goFeatures()"
+          >
+            Fonctionnalités
+          </button>
+          <button
+            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+            type="button"
+            (click)="goSecurity()"
+          >
+            Sécurité
+          </button>
+          <button
+            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+            type="button"
+            (click)="goPricing()"
+          >
+            Tarifs
+          </button>
+          <button
+            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+            type="button"
+            (click)="goAbout()"
+          >
+            À propos
+          </button>
+        </nav>
+        <div class="flex items-center gap-4">
+          <button
+            class="hidden sm:flex text-sm font-bold text-slate-700 dark:text-slate-200 px-4"
+            type="button"
+            (click)="goLogin()"
+          >
+            Connexion
+          </button>
+          <button
+            class="bg-primary hover:bg-primary/90 text-white px-6 h-11 rounded-lg text-sm font-bold tracking-wide transition-all shadow-lg shadow-primary/20"
+            type="button"
+            (click)="goRegister()"
+          >
+            Commencer gratuitement
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="flex-1">
+      <!-- Hero Section -->
+      <section class="max-w-7xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="flex flex-col gap-8 max-w-xl">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest border border-primary/20 w-fit"
+            >
+              <span class="material-symbols-outlined text-sm">auto_awesome</span>
+              La nouvelle ère de la Fintech
+            </div>
+            <h1
+              class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white"
+            >
+              Gérez vos finances avec <span class="text-primary">élégance</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+              La solution fintech moderne pour un contrôle total sur votre argent. Sécurisé, rapide et
+              incroyablement intuitif. Rejoignez le futur de la banque personnelle.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                class="bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-xl text-lg font-bold transition-all shadow-xl shadow-primary/20"
+                type="button"
+                (click)="goRegister()"
+              >
+                Ouvrir mon compte
+              </button>
+              <button
+                class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white px-8 h-14 rounded-xl text-lg font-bold transition-all"
+                type="button"
+                (click)="goFeatures()"
+              >
+                En savoir plus
+              </button>
+            </div>
+            <div class="flex items-center gap-4 pt-4">
+              <div class="flex -space-x-3">
+                <img
+                  class="size-10 rounded-full border-2 border-background-dark object-cover"
+                  data-alt="Portrait photo of a female user"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGdNULlopL9X-vTYkK_gXX56eVA4AGLaZnRWjQhTJywV-wiXVUJbMKv1nwjEYBmrfocWaj1h1f51Wedz5hVlPKtACb_n50yT0zbhPuI3uNMNmXY4kGvTID1ZFTVKhIK2Wq4soKsvRN9sdSHmEjN_F4L4Js26N9XYjWuRxcLL38EUoB1FVa-8tb90xHwyYQCdcvtSdkzXdyTgqwZar7DXnJrPYSrF9Sy3UGYIvyMDxA-tq8L0bHVm5s3H4ddUVpb6lb_ZK1UDyoPw"
+                />
+                <img
+                  class="size-10 rounded-full border-2 border-background-dark object-cover"
+                  data-alt="Portrait photo of a male user"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0FVDTyHBNTRRl7w2NISVjD1gDX5ULfxnLycijfdZAF91i5fbOJ5XUTh4G14w7Qp7gYWoXjqhJ8dxQKItv0HPNfWAN9BfoIkvWcShmeptajePXecWf8toQFtTHQSY2DNqkrCYnHKG4Uz0BF7C_Hj4tEhGjcEIER58xkRVbcQeJfKTfVuhdkF0Y_1j_wWqzcVzwidUtM5RpjXow0F4etHun0OAvYk7PmuOtxS4HYXK4sWvWps1-0SeKstL4XsEL3RJM9S5rdSq89w"
+                />
+                <img
+                  class="size-10 rounded-full border-2 border-background-dark object-cover"
+                  data-alt="Portrait photo of another male user"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxBTh_O1rY6hIR-NnXsZhH2W4MH57Ot0S86OSLMrS69xhTm6Tp8XeK6AWSHHxtGIMMt0lJ0kEgGoo5WzfF21jBX6hkVbVjOWBm-qJgZczDqEbjLqahD-jO4CKRz9UsiCDokxYZg2ZhUXjglYHAPkkeOVqOeIfxJt4wKqeOccl57J8qc_zaJnhO2Jj_IAmTC4_CR-hJ2YKUOpfjUlkErw1Ru42INnyU4FI74UP0MXMwc5A1CHxDJKt8puTCAbQWS0LyhJrSjRi0yA"
+                />
+              </div>
+              <p class="text-sm text-slate-500 dark:text-slate-500 font-medium">
+                +12k utilisateurs nous ont rejoint cette semaine
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -top-20 -right-20 size-80 bg-primary/20 rounded-full blur-[100px]"></div>
+            <div class="absolute -bottom-20 -left-20 size-80 bg-blue-600/10 rounded-full blur-[100px]"></div>
+            <div
+              class="relative bg-slate-200 dark:bg-slate-800/50 p-4 rounded-[2rem] border border-slate-300 dark:border-slate-700 shadow-2xl backdrop-blur-sm"
+            >
+              <img
+                class="rounded-[1.5rem] w-full shadow-lg"
+                data-alt="Mobile application dashboard showing financial charts"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD76_-JuufRsNKcQNdUQRNfQ8uzI6kXNBPisywjODBOAUEDZ8OX5sd2dXACi95X9FGYtfwz_1oWfg5XZ9MZkVxQv2Gto5Uf5DWAIkmWqh_YKwIvMeyXTNytIOv4WLk1vdvZrije_lBlskekX09vIW5fEncoKJoO7RlZMlVwlm_qOVhLraFCPwU48RfSguDUWuwbqM6TvlTZ5LlmqTk4Jt_M3LY80R0Ze0_hJl6G0Yv0mlnjqXK8FjgHSqDGDTS4xUZzSho35eaHg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Section -->
+      <section class="bg-slate-50 dark:bg-slate-900/50 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center gap-4">
+            <h2 class="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
+              Pourquoi choisir Finova ?
+            </h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400">
+              Une technologie de pointe conçue pour simplifier chaque aspect de votre vie financière.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 group hover:border-primary/50 transition-all"
+            >
+              <div
+                class="size-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-3xl">shield_person</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Sécurité Maximale</h3>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Vos données sont protégées par un cryptage AES-256 de niveau bancaire et une
+                authentification biométrique multicouche.
+              </p>
+            </div>
+            <!-- Feature 2 -->
+            <div
+              class="p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 group hover:border-primary/50 transition-all"
+            >
+              <div
+                class="size-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-3xl">bolt</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Transferts Instantanés</h3>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Envoyez et recevez de l'argent en quelques secondes, partout dans le monde, sans aucun
+                frais caché ni délai bancaire.
+              </p>
+            </div>
+            <!-- Feature 3 -->
+            <div
+              class="p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 group hover:border-primary/50 transition-all"
+            >
+              <div
+                class="size-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              >
+                <span class="material-symbols-outlined text-3xl">analytics</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3 text-slate-900 dark:text-white">Journal Détaillé</h3>
+              <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                Suivez chaque centime grâce à des catégories automatiques intelligentes et des rapports
+                visuels élégants et précis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Stats Section -->
+      <section class="py-20 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <p class="text-4xl md:text-5xl font-black text-primary mb-2">500K+</p>
+            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              Utilisateurs
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-4xl md:text-5xl font-black text-primary mb-2">2B€+</p>
+            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              Transactions
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-4xl md:text-5xl font-black text-primary mb-2">4.9/5</p>
+            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              Note Store
+            </p>
+          </div>
+          <div class="text-center">
+            <p class="text-4xl md:text-5xl font-black text-primary mb-2">150+</p>
+            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              Pays
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- CTA Section -->
+      <section class="max-w-7xl mx-auto px-6 py-24">
+        <div
+          class="relative overflow-hidden rounded-[2.5rem] bg-primary px-8 py-16 md:p-20 text-center flex flex-col items-center gap-8"
+        >
+          <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-[-20deg] translate-x-1/2"></div>
+          <h2 class="text-3xl md:text-6xl font-black text-white max-w-4xl leading-tight">
+            Prêt à révolutionner votre quotidien financier ?
+          </h2>
+          <p class="text-white/80 text-lg md:text-xl max-w-2xl">
+            Rejoignez des milliers d'utilisateurs qui font déjà confiance à Finova pour une gestion
+            sereine et performante.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 relative z-10">
+            <button
+              class="bg-white text-primary hover:bg-slate-100 px-10 h-16 rounded-xl text-xl font-black transition-all shadow-2xl"
+              type="button"
+              (click)="goRegister()"
+            >
+              Créer un compte gratuit
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-16">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-2 text-primary">
+            <div class="size-6 bg-primary rounded-md flex items-center justify-center text-white">
+              <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            </div>
+            <span class="text-xl font-black text-slate-900 dark:text-white">Finova</span>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+            L'excellence financière à portée de main. Innovons ensemble pour votre avenir.
+          </p>
+          <div class="flex gap-4">
+            <button class="text-slate-400 hover:text-primary transition-colors" type="button" (click)="goAbout()">
+              <span class="material-symbols-outlined">public</span>
+            </button>
+            <button class="text-slate-400 hover:text-primary transition-colors" type="button" (click)="goHelp()">
+              <span class="material-symbols-outlined">language</span>
+            </button>
+            <button class="text-slate-400 hover:text-primary transition-colors" type="button" (click)="goContact()">
+              <span class="material-symbols-outlined">mail</span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-xs">
+            Produit
+          </h4>
+          <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goFeatures()">
+                Fonctionnalités
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goCards()">
+                Cartes
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goBusiness()">
+                Comptes Business
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goSecurity()">
+                Sécurité
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-xs">
+            Compagnie
+          </h4>
+          <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goAbout()">
+                À propos
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goBlog()">
+                Blog
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goCareers()">
+                Carrières
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goPress()">
+                Presse
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-xs">
+            Légal
+          </h4>
+          <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goPrivacy()">
+                Confidentialité
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goTerms()">
+                Conditions
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goCookies()">
+                Cookies
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-primary transition-colors" type="button" (click)="goLicense()">
+                Licence
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto px-6 pt-16 mt-16 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 dark:text-slate-600 text-xs"
+      >
+        © 2024 Finova Technologies Inc. Tous droits réservés.
+      </div>
+    </footer>
+  </div>
+</div>

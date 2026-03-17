@@ -1,0 +1,167 @@
+<div class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md">
+    <!-- Logo Section -->
+    <button class="flex flex-col items-center mb-8 w-full" type="button" (click)="goHome()">
+      <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-primary text-4xl">account_balance_wallet</span>
+      </div>
+      <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold tracking-tight">Finova</h1>
+      <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Votre futur financier commence ici</p>
+    </button>
+
+    <!-- Login Card -->
+    <div
+      class="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-8 rounded-xl shadow-xl backdrop-blur-sm"
+    >
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-slate-900 dark:text-slate-100">Connexion</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Accédez à votre tableau de bord sécurisé</p>
+      </div>
+
+      <form class="space-y-5" (ngSubmit)="onSubmit()">
+        <!-- Email Field -->
+        <div class="flex flex-col gap-2">
+          <label class="text-slate-700 dark:text-slate-300 text-sm font-medium"
+            >Email ou Nom d'utilisateur</label
+          >
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl"
+              >mail</span
+            >
+            <input
+              class="w-full pl-11 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+              placeholder="nom@exemple.com"
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between items-center">
+            <label class="text-slate-700 dark:text-slate-300 text-sm font-medium">Mot de passe</label>
+            <button
+              class="text-primary text-xs font-semibold hover:underline"
+              type="button"
+              (click)="goForgotPassword()"
+            >
+              Mot de passe oublié ?
+            </button>
+          </div>
+          <div class="relative">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl"
+              >lock</span
+            >
+            <input
+              class="w-full pl-11 pr-12 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+              placeholder="••••••••"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              [(ngModel)]="password"
+              required
+            />
+            <button
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+              type="button"
+              (click)="togglePassword()"
+            >
+              <span class="material-symbols-outlined text-xl"
+                >{{ showPassword ? 'visibility_off' : 'visibility' }}</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember Me -->
+        <div class="flex items-center gap-2">
+          <input
+            class="rounded border-slate-300 dark:border-slate-700 text-primary focus:ring-primary bg-slate-50 dark:bg-slate-800"
+            id="remember"
+            type="checkbox"
+            name="remember"
+            [(ngModel)]="remember"
+          />
+          <label class="text-slate-600 dark:text-slate-400 text-sm" for="remember"
+            >Se souvenir de moi</label
+          >
+        </div>
+
+        <!-- Error -->
+        <p *ngIf="errorMessage" class="text-sm text-red-600">{{ errorMessage }}</p>
+
+        <!-- Submit Button -->
+        <button
+          class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+          type="submit"
+          [disabled]="loading"
+        >
+          <span>{{ loading ? 'Connexion...' : 'Se connecter' }}</span>
+          <span class="material-symbols-outlined text-lg">login</span>
+        </button>
+      </form>
+
+      <!-- Social Login Divider -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-slate-200 dark:border-slate-800"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 bg-white dark:bg-slate-900/50 text-slate-500 dark:text-slate-400"
+            >Ou continuer avec</span
+          >
+        </div>
+      </div>
+
+      <!-- Social Buttons -->
+      <div class="grid grid-cols-2 gap-4">
+        <button
+          class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          type="button"
+          (click)="loginWithGoogle()"
+        >
+          <img
+            alt="Google"
+            class="w-4 h-4"
+            data-alt="Google logo icon"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5slKOjcygqtb-81CJjc91n14MTXZTI0c4QYK6qY6YEMkLZbVQEeMSklEAhH-ToX8q-Ffbve-p4FLOj7xGjGEErlR4DoUwaImrdTkPuDl54AU7T1HnOx0p7ureJKlgsFRvWcPWb3okGV1bKViVaJbht_Rk0XkHhNFfxLlwVrRtNUR9E0-gnaIqOFeNiFJIoTd2NZBo8UuCgjAY6O91n_o5SdAlb2QTMJQqXq6-6xxV1qcTB3ALROlVETrD421R9LzI-D6fyryIRQ"
+          />
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Google</span>
+        </button>
+        <button
+          class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+          type="button"
+          (click)="loginWithApple()"
+        >
+          <span class="material-symbols-outlined text-slate-700 dark:text-slate-300 text-lg">ios</span>
+          <span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Apple</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Create Account Link -->
+    <p class="text-center mt-8 text-slate-600 dark:text-slate-400 text-sm">
+      Vous n'avez pas de compte ?
+      <button class="text-primary font-bold hover:underline" type="button" (click)="goRegister()">
+        Créer un compte
+      </button>
+    </p>
+
+    <!-- Footer -->
+    <footer class="mt-12 flex justify-center gap-6 text-slate-400 dark:text-slate-500 text-xs">
+      <button class="hover:text-primary transition-colors" type="button" (click)="goPrivacy()">
+        Confidentialité
+      </button>
+      <button class="hover:text-primary transition-colors" type="button" (click)="goTerms()">
+        Conditions d'utilisation
+      </button>
+      <button class="hover:text-primary transition-colors" type="button" (click)="goHelp()">
+        Centre d'aide
+      </button>
+    </footer>
+  </div>
+</div>

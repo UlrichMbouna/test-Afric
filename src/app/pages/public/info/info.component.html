@@ -1,0 +1,18 @@
+<div class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-6">
+  <div class="max-w-xl w-full text-center bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-2xl p-10 shadow-xl">
+    <h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4">{{ title }}</h1>
+    <p class="text-slate-600 dark:text-slate-400 mb-8">{{ description }}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="bg-primary text-white px-6 h-12 rounded-lg font-bold" type="button" (click)="goHome()">
+        Retour à l'accueil
+      </button>
+      <button
+        class="bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white px-6 h-12 rounded-lg font-bold"
+        type="button"
+        (click)="goLogin()"
+      >
+        Connexion
+      </button>
+    </div>
+  </div>
+</div>

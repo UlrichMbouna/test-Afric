@@ -1,0 +1,266 @@
+<div class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+  <div class="flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="layout-container flex h-full grow flex-col">
+      <!-- Header / Top Navigation -->
+      <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-20"
+      >
+        <div class="flex items-center gap-4 text-primary">
+          <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+            <span class="material-symbols-outlined">account_balance_wallet</span>
+          </div>
+          <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">
+            Fintech Manager
+          </h2>
+        </div>
+        <div class="flex gap-4 items-center">
+          <button
+            class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            type="button"
+          >
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">
+            {{ userInitials }}
+          </div>
+        </div>
+      </header>
+
+      <main class="flex flex-1 justify-center py-8 px-4 lg:px-20">
+        <div class="layout-content-container flex flex-col max-w-[1024px] flex-1 gap-8">
+          <!-- Sidebar + Form Layout Wrapper -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Side Navigation -->
+            <aside class="lg:col-span-3 flex flex-col gap-6">
+              <div class="flex flex-col gap-1 p-2">
+                <h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold">{{ userName }}</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm">
+                  Compte Premium • {{ accountNumberMasked }}
+                </p>
+              </div>
+              <nav class="flex flex-col gap-1">
+                <a
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined">dashboard</span>
+                  <span class="text-sm font-medium">Tableau de bord</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+                  <span class="material-symbols-outlined">sync_alt</span>
+                  <span class="text-sm font-medium">Transactions</span>
+                </a>
+                <a
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined">credit_card</span>
+                  <span class="text-sm font-medium">Cartes</span>
+                </a>
+                <a
+                  class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined">settings</span>
+                  <span class="text-sm font-medium">Paramètres</span>
+                </a>
+              </nav>
+              <div class="mt-auto p-4 rounded-xl bg-gradient-to-br from-primary to-primary/60 text-white">
+                <p class="text-xs uppercase tracking-wider opacity-80 mb-1">Solde disponible</p>
+                <p class="text-2xl font-bold">{{ availableBalance }}</p>
+              </div>
+            </aside>
+
+            <!-- Main Action Area -->
+            <section class="lg:col-span-9 flex flex-col gap-6">
+              <!-- Transaction Card -->
+              <div
+                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm"
+              >
+                <div class="flex border-b border-slate-200 dark:border-slate-800">
+                  <button
+                    class="flex-1 py-4 text-sm font-bold border-b-2"
+                    [class.border-primary]="mode === 'credit'"
+                    [class.text-primary]="mode === 'credit'"
+                    [class.border-transparent]="mode !== 'credit'"
+                    [class.text-slate-500]="mode !== 'credit'"
+                    [class.dark:text-slate-400]="mode !== 'credit'"
+                    (click)="setMode('credit')"
+                    type="button"
+                  >
+                    Créditer mon compte
+                  </button>
+                  <button
+                    class="flex-1 py-4 text-sm font-bold border-b-2"
+                    [class.border-primary]="mode === 'debit'"
+                    [class.text-primary]="mode === 'debit'"
+                    [class.border-transparent]="mode !== 'debit'"
+                    [class.text-slate-500]="mode !== 'debit'"
+                    [class.dark:text-slate-400]="mode !== 'debit'"
+                    (click)="setMode('debit')"
+                    type="button"
+                  >
+                    Débiter mon compte
+                  </button>
+                </div>
+                <div class="p-6 flex flex-col gap-6">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-2">
+                      <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold"
+                        >Montant (€)</label
+                      >
+                      <div class="relative">
+                        <input
+                          class="w-full h-12 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                          placeholder="0.00"
+                          step="0.01"
+                          type="number"
+                          name="amount"
+                          [(ngModel)]="amount"
+                        />
+                        <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                          <span class="material-symbols-outlined">euro</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                      <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold"
+                        >Méthode de paiement</label
+                      >
+                      <select
+                        class="w-full h-12 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        name="paymentMethod"
+                        [(ngModel)]="paymentMethod"
+                      >
+                        <option>Virement Bancaire (Instant)</option>
+                        <option>Carte Visa •••• 4242</option>
+                        <option>PayPal</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col gap-2">
+                    <label class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Description</label>
+                    <textarea
+                      class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-4 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none"
+                      placeholder="Motif de la transaction..."
+                      rows="3"
+                      name="description"
+                      [(ngModel)]="description"
+                    ></textarea>
+                  </div>
+
+                  <p *ngIf="errorMessage" class="text-sm text-red-600">{{ errorMessage }}</p>
+
+                  <button
+                    class="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2"
+                    type="button"
+                    (click)="submitTransaction()"
+                    [disabled]="loading"
+                  >
+                    <span class="material-symbols-outlined">check_circle</span>
+                    {{ loading ? 'Traitement...' : 'Confirmer la transaction' }}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Transaction Journal -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Journal de compte</h3>
+                  <button class="text-primary text-sm font-semibold hover:underline" type="button">
+                    Voir tout l'historique
+                  </button>
+                </div>
+                <div
+                  class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm overflow-x-auto"
+                >
+                  <table class="w-full text-left border-collapse">
+                    <thead>
+                      <tr
+                        class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800"
+                      >
+                        <th
+                          class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
+                        >
+                          Date
+                        </th>
+                        <th
+                          class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
+                        >
+                          Description
+                        </th>
+                        <th
+                          class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right"
+                        >
+                          Montant
+                        </th>
+                        <th
+                          class="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center"
+                        >
+                          Statut
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                      <tr
+                        *ngFor="let tx of transactions"
+                        class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors"
+                      >
+                        <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-300">{{ tx.date }}</td>
+                        <td class="px-6 py-4">
+                          <div class="flex flex-col">
+                            <span class="text-sm font-semibold text-slate-900 dark:text-slate-100"
+                              >{{ tx.title }}</span
+                            >
+                            <span class="text-xs text-slate-500">{{ tx.subtitle }}</span>
+                          </div>
+                        </td>
+                        <td
+                          class="px-6 py-4 text-sm font-bold text-right"
+                          [class.text-emerald-500]="tx.amount > 0"
+                          [class.text-slate-900]="tx.amount <= 0"
+                          [class.dark:text-slate-100]="tx.amount <= 0"
+                        >
+                          {{ tx.amount | number : '1.2-2' }} €
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                          <span
+                            class="px-2.5 py-1 text-xs font-medium rounded-full"
+                            [class.bg-emerald-100]="tx.status === 'Complété'"
+                            [class.dark:bg-emerald-500/10]="tx.status === 'Complété'"
+                            [class.text-emerald-600]="tx.status === 'Complété'"
+                            [class.dark:text-emerald-400]="tx.status === 'Complété'"
+                            [class.bg-amber-100]="tx.status === 'En cours'"
+                            [class.dark:bg-amber-500/10]="tx.status === 'En cours'"
+                            [class.text-amber-600]="tx.status === 'En cours'"
+                            [class.dark:text-amber-400]="tx.status === 'En cours'"
+                          >
+                            {{ tx.status }}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="mt-auto py-8 px-6 lg:px-20 border-t border-slate-200 dark:border-slate-800">
+        <div
+          class="max-w-[1024px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-400 text-sm"
+        >
+          <p>© 2024 Fintech Manager. Tous droits réservés.</p>
+          <div class="flex gap-6">
+            <a class="hover:text-primary transition-colors" href="#">Aide</a>
+            <a class="hover:text-primary transition-colors" href="#">Confidentialité</a>
+            <a class="hover:text-primary transition-colors" href="#">Sécurité</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>
