@@ -1,59 +1,67 @@
-# FrontAFRic
+# Front AFRic
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.20.
+Application Angular avec pages public (home, login, register) et dashboard privé. Le projet inclut un mode **mock** pour tester sans backend réel.
 
-## Development server
+## Prérequis
 
-To start a local development server, run:
+- Node.js 20+ recommandé
+- npm
+
+## Démarrage
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+L’application est accessible sur `http://localhost:4200`.
 
-## Code scaffolding
+## Comptes de test (mode mock)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Mot de passe commun : `demo1234`
 
-```bash
-ng generate component component-name
+- `jean@finova.test`
+- `amina@finova.test`
+- `lucas@finova.test`
+- `fatou@finova.test`
+
+## Données mock
+
+Les fausses données sont stockées ici :
+
+```
+/public/mock/db.json
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+URL directe en dev :
 
-```bash
-ng generate --help
+```
+http://localhost:4200/mock/db.json
 ```
 
-## Building
+## Activer / désactiver le mode mock
 
-To build the project run:
+Dans `src/environments/environment.ts` :
 
-```bash
-ng build
+```ts
+mock: true
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+En production (`environment.production.ts`) :
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```ts
+mock: false
 ```
 
-## Running end-to-end tests
+## Routes principales
 
-For end-to-end (e2e) testing, run:
+- `/` : Home
+- `/login` : Connexion
+- `/register` : Inscription
+- `/dashboard` : Dashboard (protégé)
+- Pages info : `/features`, `/security`, `/pricing`, `/about`, `/cards`, `/business`, `/blog`, `/careers`, `/press`, `/privacy`, `/terms`, `/cookies`, `/license`, `/help`, `/contact`
 
-```bash
-ng e2e
-```
+## Notes
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Le dashboard consomme les données mock si `mock: true`.
+- Les transactions et l’utilisateur courant sont stockés en `localStorage` pendant la session.

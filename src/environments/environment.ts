@@ -2,6 +2,6 @@ export const environment = {
   production: false,
   apiUrl: '',
   tokenKey: 'auth_token',
-  mock: true,
+  mock: false,
   mockDbUrl: '/mock/db.json'
 };
